@@ -1,0 +1,139 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--lb-black-background);
+    font-family: Roboto, sans-serif !important;
+}
+
+.header {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    position: relative;
+    width: 100%;
+    background: url("../images/restaurant.jpg") center no-repeat;
+    background-size: 100%;
+}
+.content {
+    max-width: 700px;
+}
+
+.logo-wrapper {
+    padding: var(--lb-padding);
+    border-radius: var(--lb-border-radius);
+    background-color: rgba(255, 255, 255, 0.84);
+}
+
+.question {
+    padding: var(--lb-padding);
+    border-radius: var(--lb-border-radius);
+    background-color: var(--lb-blue-dark);
+    color: var(--lb-white-text);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.answers {
+    padding-top: 30px;
+}
+
+.answer {
+    margin-top: 15px;
+    padding: var(--lb-padding);
+    border-radius: var(--lb-border-radius);
+    background-color: transparent;
+    border: 2px solid var(--lb-red);
+    color: var(--lb-white-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.answer:hover {
+    background-color: var(--lb-red);
+}
+.nav-buttons {
+    width: 100%;
+}
+.nav-buttons .btn {
+    text-transform: uppercase;
+    padding: var(--lb-padding) 50px;
+}
+
+/*btn*/
+.btn, .btn:hover, .btn:focus {
+    border-radius: var(--lb-border-radius);
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+.btn-success {
+    background-color: var(--lb-blue-light) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+.btn-success:hover, .btn-success:hover:active, .btn-success:active {
+    background-color: var(--lb-blue-dark) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+
+/*progressbar*/
+.progress-control-wrapper {
+    width: 100%;
+    padding: var(--lb-padding);
+}
+.progressbar {
+    min-height: 30px;
+}
+.progressbar div {
+    list-style-type: none;
+    width: 25%;
+    float: left;
+    font-size: 12px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    color: #7d7d7d;
+}
+.progressbar div:before {
+    width: 30px;
+    height: 30px;
+    content: '';
+    line-height: 30px;
+    border: 5px solid var(--lb-progressbar-inactive);
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: var(--lb-progressbar-inactive);
+}
+.progressbar div:after {
+    width: calc(100% - 40px);
+    height: 4px;
+    content: '';
+    position: absolute;
+    background-color: var(--lb-progressbar-inactive);
+    top: 14px;
+    left: calc(-50% + 20px);
+}
+.progressbar div:first-child:after {
+    content: none;
+}
+.progressbar div.active {
+    color: var(--lb-red);
+}
+.progressbar div.active:before {
+    border-color: var(--lb-red);
+    background-color: var(--lb-red);
+}
+.progressbar div.active + div:after {
+    background-color: var(--lb-red);
+}
