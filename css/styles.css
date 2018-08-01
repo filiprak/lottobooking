@@ -5,6 +5,14 @@ html, body {
     height: 100%;
     background-color: var(--lb-black-background);
     font-family: Roboto, sans-serif !important;
+    font-size: 18px;
+}
+a {
+    color: var(--lb-red);
+}
+
+a:hover {
+    color: var(--lb-red-dark);
 }
 
 .header {
@@ -12,17 +20,28 @@ html, body {
     padding-bottom: 20px;
     position: relative;
     width: 100%;
-    background: url("../images/restaurant.jpg") center no-repeat;
+    height: 40vh;
     background-size: 100%;
+    /*animation: bg-slide 10s linear 0s alternate infinite;*/
 }
+@-webkit-keyframes bg-slide {
+    from { background-position: 0 -100px; }
+    to { background-position: 0 0; }
+}
+
 .content {
     max-width: 700px;
+    min-height: 60vh;
 }
 
 .logo-wrapper {
     padding: var(--lb-padding);
     border-radius: var(--lb-border-radius);
     background-color: rgba(255, 255, 255, 0.84);
+}
+.hit3-wrapper {
+    background-color: rgba(0, 0, 0, 0.67);
+    border-radius: 50%;
 }
 
 .question {
@@ -37,6 +56,7 @@ html, body {
 
 .answers {
     padding-top: 30px;
+    min-height: 300px;
 }
 
 .answer {
@@ -56,7 +76,10 @@ html, body {
     transition: all 0.5s;
 }
 .answer:hover {
-    background-color: var(--lb-red);
+    background-color: var(--lb-red) !important;
+}
+.answer.checked {
+    background-color: var(--lb-red-dark);
 }
 .nav-buttons {
     width: 100%;
@@ -66,22 +89,54 @@ html, body {
     padding: var(--lb-padding) 50px;
 }
 
+.intro {
+    color: var(--lb-white-text);
+    text-align: center;
+}
+.intro .btn {
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.congratulations {
+    border-radius: var(--lb-border-radius);
+    background-color: var(--lb-red);
+    color: var(--lb-white-text);
+    margin-top: 50px;
+    padding: var(--lb-padding);
+    text-align: center;
+}
+.congratulations h3 {
+    margin-bottom: 50px;
+}
+.congratulations p {
+    font-size: 1.2em;
+}
+
+.footer {
+    background-color: var(--lb-blue-dark);
+    padding: var(--lb-padding) 0;
+    font-size: 12px;
+    color: var(--lb-white-text);
+}
+.footer a {
+    color: var(--lb-red);
+}
+
 /*btn*/
 .btn, .btn:hover, .btn:focus {
     border-radius: var(--lb-border-radius);
-    border: none;
-    box-shadow: none;
-    outline: none;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    font-weight: 600;
+    padding: var(--lb-padding);
 }
 .btn-success {
     background-color: var(--lb-blue-light) !important;
-    box-shadow: none !important;
-    outline: none !important;
 }
 .btn-success:hover, .btn-success:hover:active, .btn-success:active {
     background-color: var(--lb-blue-dark) !important;
-    box-shadow: none !important;
-    outline: none !important;
 }
 
 
@@ -89,6 +144,7 @@ html, body {
 .progress-control-wrapper {
     width: 100%;
     padding: var(--lb-padding);
+    height: 150px;
 }
 .progressbar {
     min-height: 30px;
@@ -136,4 +192,7 @@ html, body {
 }
 .progressbar div.active + div:after {
     background-color: var(--lb-red);
+}
+.progressbar div:not(.active):after {
+    background-color: var(--lb-progressbar-inactive) !important;
 }
