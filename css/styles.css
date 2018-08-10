@@ -5,7 +5,10 @@ html, body {
     height: 100%;
     background-color: var(--lb-black-background);
     font-family: Roboto, sans-serif !important;
+    font-weight: 100;
     font-size: 18px;
+    letter-spacing: 1px;
+    overflow-x: hidden !important;
 }
 a {
     color: var(--lb-red);
@@ -14,15 +17,40 @@ a {
 a:hover {
     color: var(--lb-red-dark);
 }
+h1,h2,h3,h4,h5,h6,p {
+    font-weight: 300;
+}
 
 .header {
     padding-top: 50px;
-    padding-bottom: 20px;
     position: relative;
     width: 100%;
-    height: 40vh;
-    background-size: 100%;
+    background-size: cover !important;
     /*animation: bg-slide 10s linear 0s alternate infinite;*/
+}
+.header-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%, 0 0);
+    clip-path: polygon(50% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%, 0 0);
+    -webkit-transform: translateZ(1px);
+    -moz-transform: translateZ(1px);
+    -ms-transform: translateZ(1px);
+    -o-transform: translateZ(1px);
+    transform: translateZ(1px);
+}
+.header-img:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    /*background-image: linear-gradient(0deg,var(--lb-black-background), rgba(0, 0, 0, 0));*/
+    background-color: rgba(0, 0, 0, 0.54);
 }
 @-webkit-keyframes bg-slide {
     from { background-position: 0 -100px; }
@@ -38,20 +66,40 @@ a:hover {
     padding: var(--lb-padding);
     border-radius: var(--lb-border-radius);
     background-color: rgba(255, 255, 255, 0.84);
+    visibility: hidden;
 }
 .hit3-wrapper {
-    background-color: rgba(0, 0, 0, 0.67);
-    border-radius: 50%;
+    position: relative;
+    background-color: var(--lb-black-background);
+    /*border-top-right-radius: var(--lb-border-radius);
+    border-top-left-radius: var(--lb-border-radius);*/
+    padding: var(--lb-padding) 10px;
+    z-index: 1;
+    border: 1px solid var(--lb-red);
+    -webkit-box-shadow: 0 20px 30px 0 rgba(145, 0, 8, 0.42);
+    box-shadow: 0 15px 30px 0 rgba(145, 0, 8, 0.42);
+}
+.hit3-wrapper:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .3;
+    z-index: -1;
+}
+.leaf-shapex {
+    border-top-right-radius: var(--lb-border-radius);
+    border-bottom-left-radius: var(--lb-border-radius);
 }
 
 .question {
     padding: var(--lb-padding);
-    border-radius: var(--lb-border-radius);
-    background-color: var(--lb-blue-dark);
+    background-image: linear-gradient(90deg,var(--lb-blue-dark),var(--lb-blue-light));
     color: var(--lb-white-text);
     text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-weight: 300;
 }
 
 .answers {
@@ -60,23 +108,50 @@ a:hover {
 }
 
 .answer {
+    position: relative;
+    user-select: none;
     margin-top: 15px;
     padding: var(--lb-padding);
-    border-radius: var(--lb-border-radius);
-    background-color: transparent;
-    border: 2px solid var(--lb-red);
+    border: 1px solid var(--lb-red);
     color: var(--lb-white-text);
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
+    font-weight: 300;
+    z-index: 1;
+
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     -ms-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
 }
-.answer:hover {
-    background-color: var(--lb-red) !important;
+.answer:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    border-radius: inherit;
+    opacity: 0;
+    z-index: -1;
+    background-image: linear-gradient(90deg,var(--lb-red),var(--lb-orange)) !important;
+    -webkit-transition: opacity .35s ease;
+    transition: opacity .35s ease;
+}
+.answer:hover:before {
+    opacity: 1 !important;
+    -webkit-box-shadow: 0 20px 30px 0 rgba(145, 0, 8, 0.42);
+    box-shadow: 0 20px 30px 0 rgba(145, 0, 8, 0.42);
+
+    outline: 10px solid rgba(255, 81, 44, 0.41);
+
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    -ms-transition: all 0.35s;
+    -o-transition: all 0.35s;
+    transition: all 0.35s;
 }
 .answer.checked {
     background-color: var(--lb-red-dark);
@@ -94,16 +169,16 @@ a:hover {
     text-align: center;
 }
 .intro .btn {
-    margin-top: 20px;
+    margin: 20px;
     text-transform: uppercase;
 }
 
 .congratulations {
-    border-radius: var(--lb-border-radius);
-    background-color: var(--lb-red);
+    background-image: linear-gradient(90deg,var(--lb-red),var(--lb-orange));
     color: var(--lb-white-text);
     margin-top: 50px;
     padding: var(--lb-padding);
+    font-weight: 300 !important;
     text-align: center;
 }
 .congratulations h3 {
@@ -114,9 +189,10 @@ a:hover {
 }
 
 .footer {
-    background-color: var(--lb-blue-dark);
+    background-color: #131313;
     padding: var(--lb-padding) 0;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 300;
     color: var(--lb-white-text);
 }
 .footer a {
@@ -125,26 +201,45 @@ a:hover {
 
 /*btn*/
 .btn, .btn:hover, .btn:focus {
-    border-radius: var(--lb-border-radius);
+    border-radius: 1px;
     border: none !important;
     box-shadow: none !important;
     outline: none !important;
-    font-weight: 600;
+    font-weight: 300;
     padding: var(--lb-padding);
+    position: relative;
+
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    -ms-transition: all 0.35s;
+    -o-transition: all 0.35s;
+    transition: all 0.35s;
 }
 .btn-success {
-    background-color: var(--lb-blue-light) !important;
+    background-image: linear-gradient(90deg,var(--lb-blue-dark), var(--lb-blue-light));
 }
 .btn-success:hover, .btn-success:hover:active, .btn-success:active {
-    background-color: var(--lb-blue-dark) !important;
+    background-image: linear-gradient(90deg,var(--lb-red), var(--lb-orange));
+    outline: 10px solid rgba(255, 81, 44, 0.44) !important;
 }
-
+.btn:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+}
+.btn-animate {
+    outline: 10px solid rgba(255, 81, 44, 0.44) !important;
+}
 
 /*progressbar*/
 .progress-control-wrapper {
-    width: 100%;
+    width: 50%;
     padding: var(--lb-padding);
-    height: 150px;
+    text-align: center;
+    margin: auto;
 }
 .progressbar {
     min-height: 30px;
@@ -160,31 +255,38 @@ a:hover {
     color: #7d7d7d;
 }
 .progressbar div:before {
-    width: 30px;
-    height: 30px;
+    width: 15px;
+    height: 15px;
     content: '';
     line-height: 30px;
-    border: 5px solid var(--lb-progressbar-inactive);
+    border: 1px solid var(--lb-progressbar-inactive);
     display: block;
     text-align: center;
     margin: 0 auto 10px auto;
-    border-radius: 50%;
+    border-radius: 0;
     background-color: var(--lb-progressbar-inactive);
 }
 .progressbar div:after {
-    width: calc(100% - 40px);
-    height: 4px;
+    width: calc(100% - 20px);
+    height: 2px;
     content: '';
     position: absolute;
     background-color: var(--lb-progressbar-inactive);
-    top: 14px;
-    left: calc(-50% + 20px);
+    top: 7px;
+    left: calc(-50% + 10px);
 }
 .progressbar div:first-child:after {
     content: none;
 }
 .progressbar div.active {
     color: var(--lb-red);
+}
+.progressbar div.active:before {
+    -webkit-box-shadow: 0 20px 30px 0 rgba(145, 0, 8, 0.42);
+    box-shadow: 0 20px 30px 0 rgba(145, 0, 8, 0.42);
+}
+.progressbar .active.current {
+    outline: 5px solid rgba(255, 81, 44, 0.41);
 }
 .progressbar div.active:before {
     border-color: var(--lb-red);

@@ -75,7 +75,7 @@ function Controller() {
         //$('.progressbar > div[question-id=' + qid + 1 + ']::after').css('background-color', 'var(--lb-progressbar-inactive)');
     };
     self.switch_image = function (url) {
-        $('.header').css('background', 'url('+url+') center no-repeat');
+        $('.header-img').css('background-image', 'url('+url+')');
     };
     self.choose_answer = function (aid) {
         $('.answer').removeClass('checked');
@@ -86,11 +86,15 @@ function Controller() {
         const type = question_opts.type;
         const answers = question_opts.answers;
 
-        var question_html = '<div class="question mt-5">' + question_text + '</div>';
+        const animdir = [ 'Right', 'Left' ];
+
+        var question_html = '<div class="question animated bounceIn' + animdir[Math.floor(Math.random()*animdir.length)]
+            + ' mt-5">' + question_text + '</div>';
         var answers_html = '<div class="answers">';
         for (var key in answers) {
             const answer_text = answers[key];
-            answers_html += '<div answer-id="' + key + '" class="answer">' + answer_text + '</div>';
+            answers_html += '<div answer-id="' + key + '" class="answer animated bounceIn' +
+                animdir[Math.floor(Math.random()*animdir.length)] + '">' + answer_text + '</div>';
         }
         answers_html += '</div>';
         return question_html + answers_html;
@@ -116,17 +120,19 @@ function Controller() {
     };
 
     self.congratulations_html = function() {
-        return '<div class="congratulations">' +
+        return '<div class="congratulations animated fadeInUp">' +
             '<h2 class="text-center">'+text_resources.cong_title+ '</h2> '+
             '<p>'+text_resources.congratulations+'</p>' +
             '</div>';
     };
     self.intro_html = function() {
         return '<div class="intro mt-5">' +
-            '<h1 class="text-center">'+text_resources.intro1+ '</h1> '+
-            '<h3>'+text_resources.intro2+'</h3>' +
-            '<h5>'+text_resources.intro3+'</h5>' +
-            '<button class="btn btn-success start-btn">'+text_resources.start_btn+'</button>' +
+            '<h1 class="text-center animated bounceInDown">'+text_resources.intro1+ '</h1>' +
+            '</br>'+
+            '<h3 class=" animated bounceInRight">'+text_resources.intro2+'</h3>' +
+            '</br>' +
+            '<h5 class=" animated bounceInLeft">'+text_resources.intro3+'</h5>' +
+            '<button class="btn btn-success start-btn animated bounceInUp">'+text_resources.start_btn+'</button>' +
             '</div>';
     };
 
