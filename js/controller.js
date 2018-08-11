@@ -163,7 +163,7 @@ function Controller() {
 
     };
     self.init();
-    self.survey_start();
+    /*self.survey_start();
     self.refresh_ui();
-    self.survey_submit();
+    self.survey_submit();*/
 }
