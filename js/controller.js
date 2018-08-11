@@ -8,7 +8,8 @@ function Controller() {
 
     //methods
     self.index = function() {
-        $('.content').css('display', 'none').html(self.intro_html()).fadeIn('slow');
+        $('.sub-header').css('display', 'none').html(self.intro_html()).fadeIn('slow');
+        $('body').addClass('intro');
         $('.progress-control-wrapper').css('display', 'none');
         self.switch_image(text_resources.intro_image);
     };
@@ -24,6 +25,8 @@ function Controller() {
     };
 
     self.survey_next = function() {
+        $('body').removeClass('intro').addClass('survey');
+
         var qnum = self.questions_ids_array().length;
         if (!self.state.currentQid) self.state.currentQid = 1;
         else if (self.state.currentQid == qnum) {
@@ -48,6 +51,7 @@ function Controller() {
     };
     self.survey_start = function() {
         self.state.currentQid = 1;
+        $('body').removeClass('intro').addClass('survey');
         $('.content').html('<div class="question-wrapper"></div>');;
         $('.progress-control-wrapper').css('display', 'block');
         self.switch_image(text_resources.questions[1].background);
@@ -55,6 +59,7 @@ function Controller() {
     self.survey_submit = function() {
         // send results to server
         // display congratulations
+        $('body').removeClass('survey').addClass('last');
         $('.content').css('display', 'none').html(self.congratulations_html()).fadeIn('fast');
         $('.progress-control-wrapper').css('display', 'none');
         self.switch_image(text_resources.cong_image);
@@ -115,24 +120,31 @@ function Controller() {
     self.refresh_ui = function() {
         const qnum = self.questions_ids_array().length;
         if (self.state.currentQid) {
+            $('.sub-header').empty();
             self.open_question(self.state.currentQid);
         }
     };
 
     self.congratulations_html = function() {
         return '<div class="congratulations animated fadeInUp">' +
-            '<h2 class="text-center">'+text_resources.cong_title+ '</h2> '+
-            '<p>'+text_resources.congratulations+'</p>' +
+            '<h2 class="text-left uppercase">'+text_resources.cong_title+ '</h2> '+
+            '<p class="text-left">'+text_resources.congratulations+'</p>' +
             '</div>';
     };
     self.intro_html = function() {
-        return '<div class="intro mt-5">' +
-            '<h1 class="text-center animated bounceInDown">'+text_resources.intro1+ '</h1>' +
-            '</br>'+
-            '<h3 class=" animated bounceInRight">'+text_resources.intro2+'</h3>' +
+        return '<div class="intro row mt-5">' +
+            '<div class="col-md-8">' +
+                '<h1 class="text-left animated bounceInDown uppercase">'+text_resources.intro1+ '</h1>' +
+                '</br>'+
+                '<h4 class="text-left animated bounceInRight">'+text_resources.intro2+'</h4>' +
+            '</div>' +
+            '<div class="col-md-4 text-left">' +
+                '<button class="btn btn-success start-btn animated bounceIn">'+text_resources.start_btn+
+                '<span><img src="images/icons/006-right-chevron-w.png"></span>' +
+                '</button>' +
             '</br>' +
-            '<h5 class=" animated bounceInLeft">'+text_resources.intro3+'</h5>' +
-            '<button class="btn btn-success start-btn animated bounceInUp">'+text_resources.start_btn+'</button>' +
+            '<h5 class="text-left animated bounceInLeft">'+text_resources.intro3+'</h5>' +
+            '</div>' +
             '</div>';
     };
 
@@ -151,4 +163,7 @@ function Controller() {
 
     };
     self.init();
+    self.survey_start();
+    self.refresh_ui();
+    self.survey_submit();
 }

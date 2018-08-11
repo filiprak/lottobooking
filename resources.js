@@ -1,12 +1,12 @@
 const text_resources = {
 
-    intro1: 'Only 3 numbers to hit and win extra 500 euro a month.',
-    intro2: 'Did you know – there are more chances to hit 3 numbers on the ozlotto then ?',
+    intro1: 'Only 3 numbers</br>to hit and win</br>extra <strong>500 euro</strong> a month.',
+    intro2: 'Did you know <img src="images/qw-ico.png"></br> – there are more chances</br>to hit 3 numbers on the ozlotto then ?',
     intro3: 'It’s so easy to win even more on the Lotto by playing Play Hit 3 exclusively on ' +
     '<a href="http://www.lottobooking.io/">lottobooking.io</a>',
 
     intro_image: 'images/money.jpg',
-    start_btn: 'Start survey !',
+    start_btn: 'Start survey ',
 
     congratulations: 'Thank you for answering the survey. ' +
     'The offer hit 3 500 for only 9.90 is valid for a limited time. act fast and win today.' +

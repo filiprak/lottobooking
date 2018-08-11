@@ -20,9 +20,17 @@ a:hover {
 h1,h2,h3,h4,h5,h6,p {
     font-weight: 300;
 }
+.intro h1,.intro h2,.intro h3,.intro h4,.intro h5,.intro h6,.intro p {
+    font-weight: 300;
+    color: var(--lb-yellow);
+}
+.uppercase {
+    text-transform: uppercase;
+}
 
 .header {
     padding-top: 50px;
+    padding-bottom: 150px;
     position: relative;
     width: 100%;
     background-size: cover !important;
@@ -34,8 +42,9 @@ h1,h2,h3,h4,h5,h6,p {
     left: 0;
     width: 100%;
     height: 100%;
-    -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%, 0 0);
-    clip-path: polygon(50% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%, 0 0);
+    -webkit-clip-path: polygon(var(--lb-bckg-chev-width) 0%, 100% 0, 100% var(--lb-bckg-chev-height), var(--lb-bckg-chev-width) 100%, 0 var(--lb-bckg-chev-height), 0 0);
+    clip-path: polygon(var(--lb-bckg-chev-width) 0%, 100% 0, 100% var(--lb-bckg-chev-height), var(--lb-bckg-chev-width) 100%, 0 var(--lb-bckg-chev-height), 0 0);
+
     -webkit-transform: translateZ(1px);
     -moz-transform: translateZ(1px);
     -ms-transform: translateZ(1px);
@@ -50,16 +59,26 @@ h1,h2,h3,h4,h5,h6,p {
     height: 100%;
     content: '';
     /*background-image: linear-gradient(0deg,var(--lb-black-background), rgba(0, 0, 0, 0));*/
-    background-color: rgba(0, 0, 0, 0.54);
+    background-color: rgba(0, 0, 0, 0.71);
 }
 @-webkit-keyframes bg-slide {
     from { background-position: 0 -100px; }
     to { background-position: 0 0; }
 }
 
-.content {
+.start-btn {
+    top: calc(50% - 60px);
+}
+
+.survey .content, .last .content {
     max-width: 700px;
     min-height: 60vh;
+}
+.survey .header {
+    padding-bottom: 300px;
+}
+.intro .footer {
+    display: none;
 }
 
 .logo-wrapper {
@@ -169,13 +188,13 @@ h1,h2,h3,h4,h5,h6,p {
     text-align: center;
 }
 .intro .btn {
-    margin: 20px;
+    margin-bottom: 20px;
     text-transform: uppercase;
 }
 
 .congratulations {
     background-image: linear-gradient(90deg,var(--lb-red),var(--lb-orange));
-    color: var(--lb-white-text);
+    color: var(--lb-white-text) !important;
     margin-top: 50px;
     padding: var(--lb-padding);
     font-weight: 300 !important;
@@ -216,7 +235,9 @@ h1,h2,h3,h4,h5,h6,p {
     transition: all 0.35s;
 }
 .btn-success {
-    background-image: linear-gradient(90deg,var(--lb-blue-dark), var(--lb-blue-light));
+    /*background-image: linear-gradient(90deg,var(--lb-blue-dark), var(--lb-blue-light));*/
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--lb-red) !important;
 }
 .btn-success:hover, .btn-success:hover:active, .btn-success:active {
     background-image: linear-gradient(90deg,var(--lb-red), var(--lb-orange));
@@ -297,4 +318,26 @@ h1,h2,h3,h4,h5,h6,p {
 }
 .progressbar div:not(.active):after {
     background-color: var(--lb-progressbar-inactive) !important;
+}
+
+
+/*parallax*/
+.parallax {
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*particles*/
+body {
+    position: relative;
+}
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

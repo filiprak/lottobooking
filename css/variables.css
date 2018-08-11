@@ -1,4 +1,7 @@
 :root {
+    --lb-bckg-chev-width: 66%;
+    --lb-bckg-chev-height: 85%;
+
     /* theme spacings and borders */
     --lb-padding: 20px;
     --lb-margin: 15px;
